@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="jquery.min.js"></script>
+	<style>
+		body{
+			padding: 0;
+			font-size: 10px;
+		}
+
+		.topmenu {
+			padding: 0;
+			display: block;
+			width: 220px;
+			border: 2px solid #e4393c;
+		}
+
+		.toptitle {
+			height: 40px;
+			line-height: 40px;
+			text-align: left;
+			font-size: 11px;
+			font-weight: bold;
+			color: white;
+			background: #e4393c;
+			padding-left: 20px;
+		}
+
+		.topmenu li {
+			height: 30px;
+			line-height: 30px;
+			font-size: 11px;
+			list-style-type: none;
+			text-align:left;
+			padding-left: 8px;
+			z-index: 3;
+			background-image: url(jiantou.png);
+			background-size: 29px;
+			background-repeat: no-repeat;
+			background-position: right;
+		}
+
+		.topmenu li a {
+			text-decoration: none;
+			color: #313131;
+		}
+
+		.topmenu li a:hover {
+			text-decoration: underline;
+			font-weight: bold;
+			color: #e4393c;
+		}
+
+		
+
+		.submenu {
+			display: none;
+			width: 715px;
+			left: 220px;
+			position: absolute;
+			top: 40px;
+			border: 1px solid #ddd;
+			z-index: 4;
+			background: white;
+			box-shadow: 0 0 8px #DDD;
+			-moz-box-shadow: 0 0 8px #DDD;/*firefox兼容*/
+			-webkit-box-shadow: 0 0 8px #DDD;/*google兼容*/
+		}
+
+		.leftdiv {
+			float: left;
+			width: 490px;
+			margin: 5px;
+		}
+
+		.rightdiv {
+			float: left;
+			width: 200px;
+			margin: 5px;
+		}
+
+		.topmenu .lihover {    
+			border: 1px solid #DDD;
+			border-right: 0;
+			box-shadow: 0 0 8px #DDD;
+			-moz-box-shadow: 0 0 8px #DDD;/*firefox兼容*/
+			-webkit-box-shadow: 0 0 8px #DDD;/*google兼容*/
+			background-image: none;
+			height: 60px;
+			border-left: 4px solid #e4393c;
+		}
+
+		.topmenu .lihover .submenu{
+			display: block;
+		}
+
+		.topmenu .lihover span{
+			background: white;
+			display: inline-block;
+			z-index: 20;
+			width: 20px;
+			height: 60px;
+			float: right;
+			position: relative;
+		}
+
+		.topmenu .lihover b {
+			display: block;
+			height: 30px;
+			line-height: 30px;
+			font-weight: normal;
+			font-size: 10px;
+		}
+
+		.leftdiv dl {
+			display: block;
+			border-bottom: 1px solid #eee;
+			padding-bottom: 6px;
+			overflow: hidden;
+		}
+
+		.leftdiv dl dt {
+			display: block;
+			float: left;
+			width: 60px;
+			text-align: right;
+			height: 22px;
+			line-height: 22px;
+			padding-right: 6px;
+		}
+
+		.leftdiv dl dt a {
+			color: #e4394c;
+			font-weight: bold;
+			text-decoration: underline;
+			font-size: 10px;
+		}
+
+		.leftdiv dl dd {
+			display: block;
+			overflow: hidden;
+		}
+
+		.leftdiv dl dd a {
+			display: block;
+			float: left;
+			border-left: 1px solid #ccc;
+			color: #737373;
+			font-size: 10px;
+			padding: 0 8px;
+			height: 11px;
+			line-height: 11px;
+			margin: 5.5px 0;
+		}
+
+		.rightdiv dl dd {
+			margin: 3px 0;
+		}
+
+		.rightdiv dl dt {
+			color: #e4393c;
+			font-weight: bold;
+			font-size: 10px;
+		}
+
+		.rightdiv dl dd a {
+			font-size: 9px;
+			color: #737373;
+			line-height: 22px;
+		}
+
+		.rightdiv dl dd a:hover {
+			color: #737373;
+			font-weight: normal;
+		}
+
+		.topmenu li b {
+			display: none;
+		}
+
+		.rightPic {
+			position: relative;
+			right: -135px;
+			bottom: -50px;
+		}
+
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		window.onload = function() {
+			var Lis = document.getElementsByTagName("li");
+			for(i = 0; i < Lis.length; i++) {
+				Lis[i].i = i;
+				Lis[i].onmouseover = function() {
+					this.className = "lihover";
+
+					var h0 = (this.i - 1) * 30 + 42;
+					var y = this.getElementsByTagName("div")[0].offsetHeight;
+					var h = this.getElementsByTagName("div")[0].style.top + y;
+
+					if(h < h0) {
+						this.getElementsByTagName("div")[0].style.top = h0 + "px";
+					}
+					if(y > 550) {
+						this.getElementsByTagName("div")[0].style.top = "3px";
+					}
+				}
+
+				Lis[i].onmouseout = function() {
+					this.className = "";
+				}
+			}
+		}
+	</script>
+	<ul class="topmenu">
+		<div class="toptitle">
+			全部商品分类
+		</div>
+		<li><a href="#">图书、音像、数字产品</a><span></span>
+			<b>
+				<a href="#">免费</a>
+				<a href="#">小说</a>
+				<a href="#">经济</a>
+				<a href="#">文学</a>
+			</b>
+			<div class="submenu">
+				<div class="leftdiv">
+					<dl>
+						<dt><a href="#">电子书</a></dt>
+						<dd>
+							<a href="#">免费</a>
+							<a href="#">小说</a>
+							<a href="#">经济</a>
+							<a href="#">文学</a>
+							<a href="#">外文</a>
+							<a href="#">漫画</a>
+							<a href="#">科技</a>
+							<a href="#">畅读VIP</a>
+						</dd>
+					</dl>
+				</div>
+				<div class="rightdiv">
+					<dl>
+						<dd>
+							<a href="http://www.hao123.com">
+								<img src="yiren.gif" width="168" height="112" title="\家电"> 
+							</a>
+						</dd>
+						<!-- <dd>
+							<a href="http://www.hao123.com">
+								<img src="yiren.gif" width="168" height="112" title="\家电"> 
+							</a>
+						</dd> -->
+					</dl>
+
+					<dl>
+						<dt>推荐品牌</dt>
+						<dd>
+							<a href="#">美丽秀发</a>
+						</dd>
+						<dd>
+							<a href="#">怡人最美</a>
+						</dd>
+						<!-- <dd>
+							<a href="#">produce48</a>
+						</dd>
+						<dd>
+							<a href="#">pikaboo</a>
+						</dd> -->
+					</dl>
+
+					<img class="rightPic" src="musicherz.png"/>
+
+				</div>
+			</div>
+		</li>
+		<li><a href="#">家用电器</a><span></span>
+		<div class="submenu">
+				<div class="leftdiv">
+					<dl>
+						<dt><a href="#">电子书2</a></dt>
+						<dd>
+							<a href="#">免费2</a>
+							<a href="#">小说2</a>
+							<a href="#">经济2</a>
+							<a href="#">文学2</a>
+							<a href="#">外文2</a>
+							<a href="#">漫画2</a>
+							<a href="#">科技2</a>
+							<a href="#">畅读VIP2</a>
+							<a href="#">免费2</a>
+							<a href="#">小说2</a>
+							<a href="#">经济2</a>
+							<a href="#">文学2</a>
+							<a href="#">外文2</a>
+							<a href="#">漫画2</a>
+							<a href="#">科技2</a>
+							<a href="#">畅读VIP2</a>
+							<a href="#">免费2</a>
+							<a href="#">小说2</a>
+							<a href="#">经济2</a>
+							<a href="#">文学2</a>
+							<a href="#">外文2</a>
+							<a href="#">漫画2</a>
+							<a href="#">科技2</a>
+							<a href="#">畅读VIP2</a>
+						</dd>
+					</dl>
+				</div>
+				<div class="rightdiv">
+					右侧推荐品牌
+				</div>
+			</div>
+		</li>
+		<li><a href="#">家居、家具、厨具</a><span></span>
+			<div class="submenu">
+				<div class="leftdiv">
+					<dl>
+						<dt><a href="#">电子书3</a></dt>
+						<dd>
+							<a href="#">免费3</a>
+							<a href="#">小说3</a>
+							<a href="#">经济3</a>
+							<a href="#">文学3</a>
+							<a href="#">外文3</a>
+							<a href="#">漫画3</a>
+							<a href="#">科技3</a>
+							<a href="#">畅读VIP3</a>
+						</dd>
+					</dl>
+				</div>
+				<div class="rightdiv">
+					右侧推荐品牌
+				</div>
+			</div>
+		</li>
+		<li><a href="#">家居、家具、厨具</a><span></span>
+			<div class="submenu">
+				<div class="leftdiv">
+					<dl>
+						<dt><a href="#">电子书4</a></dt>
+						<dd>
+							<a href="#">免费4</a>
+							<a href="#">小说4</a>
+							<a href="#">经济4</a>
+							<a href="#">文学4</a>
+							<a href="#">外文4</a>
+							<a href="#">漫画4</a>
+							<a href="#">科技4</a>
+							<a href="#">畅读VIP4</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt><a href="#">电子书4</a></dt>
+						<dd>
+							<a href="#">免费4</a>
+							<a href="#">小说4</a>
+							<a href="#">经济4</a>
+							<a href="#">文学4</a>
+							<a href="#">外文4</a>
+							<a href="#">漫画4</a>
+							<a href="#">科技4</a>
+							<a href="#">畅读VIP4</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt><a href="#">电子书4</a></dt>
+						<dd>
+							<a href="#">免费4</a>
+							<a href="#">小说4</a>
+							<a href="#">经济4</a>
+							<a href="#">文学4</a>
+							<a href="#">外文4</a>
+							<a href="#">漫画4</a>
+							<a href="#">科技4</a>
+							<a href="#">畅读VIP4</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt><a href="#">电子书4</a></dt>
+						<dd>
+							<a href="#">免费4</a>
+							<a href="#">小说4</a>
+							<a href="#">经济4</a>
+							<a href="#">文学4</a>
+							<a href="#">外文4</a>
+							<a href="#">漫画4</a>
+							<a href="#">科技4</a>
+							<a href="#">畅读VIP4</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt><a href="#">电子书4</a></dt>
+						<dd>
+							<a href="#">免费4</a>
+							<a href="#">小说4</a>
+							<a href="#">经济4</a>
+							<a href="#">文学4</a>
+							<a href="#">外文4</a>
+							<a href="#">漫画4</a>
+							<a href="#">科技4</a>
+							<a href="#">畅读VIP4</a>
+							<a href="#">免费4</a>
+							<a href="#">小说4</a>
+							<a href="#">经济4</a>
+							<a href="#">文学4</a>
+							<a href="#">外文4</a>
+							<a href="#">漫画4</a>
+							<a href="#">科技4</a>
+							<a href="#">畅读VIP4</a>
+							<a href="#">免费4</a>
+							<a href="#">小说4</a>
+							<a href="#">经济4</a>
+							<a href="#">文学4</a>
+							<a href="#">外文4</a>
+							<a href="#">漫画4</a>
+							<a href="#">科技4</a>
+							<a href="#">畅读VIP4</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt><a href="#">电子书4</a></dt>
+						<dd>
+							<a href="#">免费4</a>
+							<a href="#">小说4</a>
+							<a href="#">经济4</a>
+							<a href="#">文学4</a>
+							<a href="#">外文4</a>
+							<a href="#">漫画4</a>
+							<a href="#">科技4</a>
+							<a href="#">畅读VIP4</a>
+							<a href="#">免费4</a>
+							<a href="#">小说4</a>
+							<a href="#">经济4</a>
+							<a href="#">文学4</a>
+							<a href="#">外文4</a>
+							<a href="#">漫画4</a>
+							<a href="#">科技4</a>
+							<a href="#">畅读VIP4</a>
+							<a href="#">免费4</a>
+							<a href="#">小说4</a>
+							<a href="#">经济4</a>
+							<a href="#">文学4</a>
+							<a href="#">外文4</a>
+							<a href="#">漫画4</a>
+							<a href="#">科技4</a>
+							<a href="#">畅读VIP4</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt><a href="#">电子书4</a></dt>
+						<dd>
+							<a href="#">免费4</a>
+							<a href="#">小说4</a>
+							<a href="#">经济4</a>
+							<a href="#">文学4</a>
+							<a href="#">外文4</a>
+							<a href="#">漫画4</a>
+							<a href="#">科技4</a>
+							<a href="#">畅读VIP4</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt><a href="#">电子书4</a></dt>
+						<dd>
+							<a href="#">免费4</a>
+							<a href="#">小说4</a>
+							<a href="#">经济4</a>
+							<a href="#">文学4</a>
+							<a href="#">外文4</a>
+							<a href="#">漫画4</a>
+							<a href="#">科技4</a>
+							<a href="#">畅读VIP4</a>
+							<a href="#">免费4</a>
+							<a href="#">小说4</a>
+							<a href="#">经济4</a>
+							<a href="#">文学4</a>
+							<a href="#">外文4</a>
+							<a href="#">漫画4</a>
+							<a href="#">科技4</a>
+							<a href="#">畅读VIP4</a>
+							<a href="#">免费4</a>
+							<a href="#">小说4</a>
+							<a href="#">经济4</a>
+							<a href="#">文学4</a>
+							<a href="#">外文4</a>
+							<a href="#">漫画4</a>
+							<a href="#">科技4</a>
+							<a href="#">畅读VIP4</a>
+							<a href="#">免费4</a>
+							<a href="#">小说4</a>
+							<a href="#">经济4</a>
+							<a href="#">文学4</a>
+							<a href="#">外文4</a>
+							<a href="#">漫画4</a>
+							<a href="#">科技4</a>
+							<a href="#">畅读VIP4</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt><a href="#">电子书4</a></dt>
+						<dd>
+							<a href="#">免费4</a>
+							<a href="#">小说4</a>
+							<a href="#">经济4</a>
+							<a href="#">文学4</a>
+							<a href="#">外文4</a>
+							<a href="#">漫画4</a>
+							<a href="#">科技4</a>
+							<a href="#">畅读VIP4</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt><a href="#">电子书4</a></dt>
+						<dd>
+							<a href="#">免费4</a>
+							<a href="#">小说4</a>
+							<a href="#">经济4</a>
+							<a href="#">文学4</a>
+							<a href="#">外文4</a>
+							<a href="#">漫画4</a>
+							<a href="#">科技4</a>
+							<a href="#">畅读VIP4</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt><a href="#">电子书4</a></dt>
+						<dd>
+							<a href="#">免费4</a>
+							<a href="#">小说4</a>
+							<a href="#">经济4</a>
+							<a href="#">文学4</a>
+							<a href="#">外文4</a>
+							<a href="#">漫画4</a>
+							<a href="#">科技4</a>
+							<a href="#">畅读VIP4</a>
+						</dd>
+					</dl>
+					<dl>
+						<dt><a href="#">电子书4</a></dt>
+						<dd>
+							<a href="#">免费4</a>
+							<a href="#">小说4</a>
+							<a href="#">经济4</a>
+							<a href="#">文学4</a>
+							<a href="#">外文4</a>
+							<a href="#">漫画4</a>
+							<a href="#">科技4</a>
+							<a href="#">畅读VIP4</a>
+						</dd>
+					</dl>
+				</div>
+				<div class="rightdiv">
+					右侧推荐品牌
+				</div>
+			</div>
+		</li>
+	</ul>
+
+</body>
+</html>
